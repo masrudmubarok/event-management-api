@@ -1,68 +1,114 @@
-# CodeIgniter 4 Application Starter
+# Event Management API
 
-## What is CodeIgniter?
+This is an event management API built with CodeIgniter 4 and MySQL.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Requirements
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
-
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
-
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
-
-## Installation & updates
-
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
-
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+* PHP (version supported by CodeIgniter 4)
+* Composer
+* MySQL
+* Git
 
 ## Setup
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+1.  **Clone the repository:**
 
-## Important Change with index.php
+    ```bash
+    git clone <repository_url>
+    cd <repository_name>
+    ```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+2.  **Install Composer dependencies:**
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+    ```bash
+    composer install
+    ```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+3.  **Database Configuration:**
 
-## Repository Management
+    * Create a database named `event_management` in your MySQL server.
+    * Copy the `env` file to `.env`:
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+        ```bash
+        cp env .env
+        ```
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+    * Open the `.env` file and configure the database connection:
 
-## Server Requirements
+        ```ini
+        database.default.hostname = localhost
+        database.default.database = event_management
+        database.default.username = <your_mysql_username>
+        database.default.password = <your_mysql_password>
+        database.default.DBDriver = MySQLi
+        database.default.DBPrefix =
+        database.default.port = 3306
+        ```
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+        Replace `<your_mysql_username>` and `<your_mysql_password>` with your MySQL credentials.
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+4.  **Database Migration:**
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+    ```bash
+    php spark migrate
+    ```
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+5.  **Run Development Server:**
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+    ```bash
+    php spark serve
+    ```
+
+    The API will be running at `http://localhost:8080`.
+
+## API Implementation with Postman
+
+1.  **GET /api/events:**
+
+    * Retrieves all events.
+    * URL: `http://localhost:8080/api/events`
+    * Method: GET
+
+2.  **POST /api/events:**
+
+    * Creates a new event.
+    * URL: `http://localhost:8080/api/events`
+    * Method: POST
+    * Body (JSON):
+
+        ```json
+        {
+            "name": "New Event",
+            "date": "2024-12-31",
+            "location": "New Location",
+            "description": "New Description"
+        }
+        ```
+
+3.  **GET /api/events/{id}:**
+
+    * Retrieves an event by ID.
+    * URL: `http://localhost:8080/api/events/{id}` (replace `{id}` with the event ID)
+    * Method: GET
+
+4.  **PUT /api/events/{id}:**
+
+    * Updates an event by ID.
+    * URL: `http://localhost:8080/api/events/{id}` (replace `{id}` with the event ID)
+    * Method: PUT
+    * Body (JSON):
+
+        ```json
+        {
+            "name": "Updated Event",
+            "date": "2025-01-01",
+            "location": "Updated Location",
+            "description": "Updated Description"
+        }
+        ```
+
+5.  **DELETE /api/events/{id}:**
+
+    * Deletes an event by ID.
+    * URL: `http://localhost:8080/api/events/{id}` (replace `{id}` with the event ID)
+    * Method: DELETE
