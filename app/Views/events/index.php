@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Event Management</title>
+    <title>Event Management Center</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Event Management</h1>
-    <button id="addEventButton">Add Event</button>
-    <table id="eventsTable" class="display">
-        <thead>
-            <tr>
-                <th>No</th> <th>Name</th>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <h2 class="app-title">Event Management</h2>
+    <div class="container">
+        <button id="addEventButton">Add Event</button>
+        <table id="eventsTable" class="display">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
 
-    <div id="eventModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form id="eventFormSubmit">
-                <input type="hidden" id="eventId">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name"><br>
-                <label for="date">Date:</label><br>
-                <input type="date" id="date" name="date"><br>
-                <label for="location">Location:</label><br>
-                <input type="text" id="location" name="location"><br>
-                <label for="description">Description:</label><br>
-                <textarea id="description" name="description"></textarea><br><br>
-                <button type="submit">Submit</button>
-                <button type="button" id="cancelButton">Cancel</button>
-            </form>
+        <div id="eventModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="eventFormSubmit">
+                    <input type="hidden" id="eventId">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name"><br>
+                    <label for="date">Date:</label><br>
+                    <input type="date" id="date" name="date"><br>
+                    <label for="location">Location:</label><br>
+                    <input type="text" id="location" name="location"><br>
+                    <label for="description">Description:</label><br>
+                    <textarea id="description" name="description"></textarea><br><br>
+                    <button type="submit">Submit</button>
+                    <button type="button" id="cancelButton">Cancel</button>
+                </form>
+            </div>
         </div>
     </div>
 
