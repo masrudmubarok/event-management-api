@@ -27,7 +27,7 @@ This is an event management API built with CodeIgniter 4 and MySQL.
 3.  **Database Configuration:**
 
     * Create a database named `event_management` in your MySQL server.
-    * Copy the `env` file to `.env`:
+    * Copy the `.env.example` file to `.env`:
 
         ```bash
         cp env .env
