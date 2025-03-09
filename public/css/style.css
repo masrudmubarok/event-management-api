@@ -16,6 +16,7 @@ button {
     border: none;
     cursor: pointer;
     margin-bottom: 10px;
+    border-radius: 5px; /* Tambahkan radius pada tombol */
 }
 
 button:hover {
@@ -27,13 +28,15 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan shadow untuk efek 3D */
+    border-radius: 8px; /* Tambahkan radius pada tabel */
+    overflow: hidden; /* Mencegah konten meluap dari radius */
 }
 
 th,
 td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px 15px; /* Tambahkan padding untuk tampilan lebih luas */
     text-align: left;
 }
 
@@ -46,7 +49,8 @@ th {
     padding: 20px;
     border: 1px solid #ddd;
     margin-top: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 label {
@@ -57,11 +61,12 @@ label {
 input[type="text"],
 input[type="date"],
 textarea {
-    width: calc(100% - 16px);
-    padding: 8px;
+    width: calc(100% - 22px); /* Sesuaikan lebar input */
+    padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     box-sizing: border-box;
+    border-radius: 5px;
 }
 
 textarea {
@@ -70,10 +75,11 @@ textarea {
 
 .editButton,
 .deleteButton {
-    padding: 5px 10px;
+    padding: 8px 12px;
     margin-right: 5px;
     border: none;
     cursor: pointer;
+    border-radius: 5px; /* Tambahkan radius pada tombol edit dan delete */
 }
 
 .editButton {
@@ -114,6 +120,7 @@ textarea {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    border-radius: 8px;
 }
 
 .close {
