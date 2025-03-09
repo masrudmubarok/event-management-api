@@ -62,6 +62,15 @@
                             return '<button class="editButton" data-id="' + row.id + '">Edit</button> <button class="deleteButton" data-id="' + row.id + '">Delete</button>';
                         }
                     }
+                ],
+                autoWidth: false,
+                columnDefs: [
+                    { width: "5%", targets: 0 },
+                    { width: "20%", targets: 1 },
+                    { width: "15%", targets: 2 },
+                    { width: "25%", targets: 3 },
+                    { width: "25%", targets: 4 },
+                    { width: "10%", targets: 5 }
                 ]
             });
 

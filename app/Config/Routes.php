@@ -15,11 +15,7 @@ $routes->setDefaultController('EventController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-// The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
-// where controller filters or CSRF protection are bypassed.
-// If you don't want to define all routes, please use the Auto Routing (Improved).
-// Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-//$routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -32,7 +28,11 @@ $routes->get('/', 'EventController::index');
 
 // API Routes
 $routes->group('api', ['namespace' => 'App\Controllers\Api'], function ($routes) {
-    $routes->resource('events');
+    $routes->get('events', 'EventAPIController::index');
+    $routes->post('events', 'EventAPIController::create');
+    $routes->get('events/(:num)', 'EventAPIController::show/$1');
+    $routes->put('events/(:num)', 'EventAPIController::update/$1');
+    $routes->delete('events/(:num)', 'EventAPIController::delete/$1');
 });
 
 /*

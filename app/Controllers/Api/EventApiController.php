@@ -12,7 +12,20 @@ class EventApiController extends ResourceController
 
     public function index()
     {
-        return $this->respond($this->model->findAll());
+        $data = $this->model->findAll();
+        if (empty($data)) {
+            return $this->failNotFound('No events found');
+        }
+        return $this->respond($data);
+    }
+
+    public function show($id = null)
+    {
+        $data = $this->model->find($id);
+        if (!$data) {
+            return $this->failNotFound('Event not found');
+        }
+        return $this->respond($data);
     }
 
     public function create()
